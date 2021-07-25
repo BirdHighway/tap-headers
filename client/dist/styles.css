@@ -1,3 +1,56 @@
 body {
   font-family: sans-serif;
 }
+
+h1 {
+  text-align: center;
+}
+
+.cycle-list-div {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.cycle-header {
+  padding: 0.5rem 1rem;
+  background-color: #888;
+  color: #fff;
+  margin-bottom: 0;
+}
+
+.cycle-div {
+  display: flex;
+}
+
+.request-div,
+.response-div {
+  flex-grow: 1;
+  flex-basis: 0;
+  border: 1px solid #333;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.request-div .headers-div,
+.response-div .headers-div {
+  overflow: hidden;
+}
+
+.request-div .headers-div pre,
+.response-div .headers-div pre {
+  margin-top: 0;
+  overflow: hidden;
+}
+
+.request-div h4,
+.response-div h4 {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+pre.meta-line {
+  font-weight: bold;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
