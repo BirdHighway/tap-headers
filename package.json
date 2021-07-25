@@ -4,11 +4,22 @@
   "description": "Express middleware for exploring request and response headers",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --watch"
   },
   "author": "BirdHighway",
   "license": "ISC",
   "dependencies": {
     "ws": "^7.5.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
+    "babel-loader": "^8.2.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "webpack": "^5.46.0",
+    "webpack-cli": "^4.7.2"
   }
 }
