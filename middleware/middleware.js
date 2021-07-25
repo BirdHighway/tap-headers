@@ -55,7 +55,20 @@ const createMiddleware = (options) => {
   });
 
   server.listen(PORT, () => {
-    console.log(`tap-headers data is visible at http://localhost:${PORT}`);
+    let width = process.stdout.columns || 100;
+    width = width > 100 ? 100 : width;
+    const fullLine = '*'.repeat(width);
+    let messageLine = `tap-headers data is now visible at http://localhost:${PORT}`;
+    let blankLine = '*';
+    if (width > 62) {
+      messageLine = '* ' + messageLine.padEnd(width - 3, ' ') + '*';
+      blankLine = '* ' + ' '.repeat(width - 3) + '*';
+    }
+    console.log(fullLine);
+    console.log(blankLine);
+    console.log(messageLine);
+    console.log(blankLine);
+    console.log(fullLine);
   });
 
   const middleware = (request, response, next) => {
