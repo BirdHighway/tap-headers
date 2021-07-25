@@ -6,10 +6,19 @@
   "scripts": {
     "build": "webpack --watch"
   },
-  "author": "BirdHighway",
+  "author": "Stephen Hyde <stephen@shyde.net>",
   "license": "ISC",
   "dependencies": {
     "ws": "^7.5.3"
+  },
+  "homepage": "https://github.com/BirdHighway/tap-headers",
+  "bugs": {
+    "url": "https://github.com/BirdHighway/tap-headers/issues",
+    "email": "stephen@shyde.net"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BirdHighway/tap-headers"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",
