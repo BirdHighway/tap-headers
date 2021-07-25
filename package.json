@@ -1,0 +1,14 @@
+{
+  "name": "tap-headers",
+  "version": "1.0.0",
+  "description": "Express middleware for exploring request and response headers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BirdHighway",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^7.5.3"
+  }
+}
