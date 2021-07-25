@@ -4,7 +4,11 @@ Express middleware for easily viewing request and response headers in the browse
 
 ## About
 
-This is intended for educational purposes, although it may also be useful in certain debugging situations. It is not recommended for production environments.
+Tired of having to open the Chrome DevTools network tab and click through the requests to see what headers were sent or received? This middleware captures all incoming and outgoing headers for your Express application, and presents them in an easy-to-read format on a webpage running on a different port. The headers are logged in real time, so leaving this page open in a separate window may make certain debugging tasks much easier.
+
+This package can also be used as an educational tool to explore or demonstrate the request-response cycle, or to ensure that the right headers are sent via other programs such as curl or Postman.
+
+Tap Headers is not suitable for production environments.
 
 ## Installation
 ```

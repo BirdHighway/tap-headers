@@ -2,6 +2,12 @@
   "name": "tap-headers",
   "version": "1.0.0",
   "description": "Express middleware for exploring request and response headers",
+  "keywords": [
+    "express",
+    "http",
+    "middleware",
+    "headers"
+  ],
   "main": "index.js",
   "scripts": {
     "build": "webpack --watch"
