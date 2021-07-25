@@ -55,7 +55,7 @@ const createMiddleware = (options) => {
   });
 
   server.listen(PORT, () => {
-    console.log(`Listening on port ${PORT}`);
+    console.log(`tap-headers data is visible at http://localhost:${PORT}`);
   });
 
   const middleware = (request, response, next) => {
