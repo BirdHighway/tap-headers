@@ -46,12 +46,20 @@ const createMiddleware = (options) => {
     response.end(data);
   });
 
-  // set up the web socket connection
-  wss.on('connection', (ws) => {
-    dataRelay.on('data', (dataObject) => {
-      const stringifiedData = JSON.stringify(dataObject);
+  dataRelay.on('data', (dataObject) => {
+    const stringifiedData = JSON.stringify(dataObject);
+    wss.clients.forEach((ws) => {
       ws.send(stringifiedData);
     });
+  });
+
+  // set up the web socket connection
+  wss.on('connection', (ws) => {
+    console.log(`tap-headers WebSocket "connection" event`);
+  });
+
+  wss.on('close', () => {
+    console.log(`tap-headers WebSocket "close" event`);
   });
 
   server.listen(PORT, () => {
