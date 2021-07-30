@@ -29,7 +29,7 @@ Navigate to http://localhost:3001 to view the record of request and response hea
 
 ## Options
 
-The `tapHeaders()` invocation accepts a optional coniguration object. The available options are listed below together with their default values.
+The `tapHeaders()` invocation accepts a optional configuration object. The available options are listed below together with their default values.
 
 ```
 const options = {
@@ -38,7 +38,6 @@ const options = {
 }
 app.use(tapHeaders(options));
 ```
-
 
 ## Tech Stack
 
