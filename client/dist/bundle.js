@@ -169,7 +169,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \****************************************/
 /***/ ((module) => {
 
-eval("var url = 'ws://localhost:3001';\nvar connection = new WebSocket(url);\n\nconnection.onopen = function () {\n  console.log('WS connection open!');\n};\n\nconnection.onerror = function (err) {\n  console.log('WS error!');\n  console.log(err);\n};\n\nmodule.exports = connection;\n\n//# sourceURL=webpack://tap-headers/./client/src/websockets/index.js?");
+eval("var url = \"ws://localhost:\".concat(window.TAP_HEADERS_PORT);\nvar connection = new WebSocket(url);\n\nconnection.onopen = function () {\n  console.log('WS connection open!');\n};\n\nconnection.onerror = function (err) {\n  console.log('WS error!');\n  console.log(err);\n};\n\nmodule.exports = connection;\n\n//# sourceURL=webpack://tap-headers/./client/src/websockets/index.js?");
 
 /***/ }),
 

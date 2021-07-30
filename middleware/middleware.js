@@ -16,8 +16,9 @@ const stylesPath = path.join(__dirname, '..', 'client', 'dist', 'styles.css');
 const styles = fs.readFileSync(stylesPath);
 
 const createMiddleware = (options) => {
-  options = options | {};
-  const PORT = options.port | 3001;
+  options = options || {};
+  const TAP_HEADERS_PORT = options.port || 3001;
+  const INCLUDE_BODY = options.includeBody || false;
   const server = http.createServer();
   const wss = new WebSocket.Server({server});
 
@@ -32,6 +33,7 @@ const createMiddleware = (options) => {
     if (url === '/' || url === '/index.html') {
       contentType = 'text/html; charset=UTF-8';
       data = html.toString();
+      data = data.replace('3001', TAP_HEADERS_PORT.toString());
     }
     if (url === '/bundle.js') {
       contentType = 'application/javascript; charset=UTF-8';
@@ -50,11 +52,7 @@ const createMiddleware = (options) => {
     wss.clients.forEach((ws) => {
       ws.send(stringifiedData);
     });
-  }).on('end', () => {
-    console.log('DataRelay::end')
-  }).on('close', () => {
-    console.log('DataRelay::close');
-  })
+  });
 
   // set up the web socket connection
   wss.on('connection', (ws) => {
@@ -65,11 +63,11 @@ const createMiddleware = (options) => {
     console.log(`tap-headers WebSocket "close" event`);
   });
 
-  server.listen(PORT, () => {
+  server.listen(TAP_HEADERS_PORT, () => {
     let width = process.stdout.columns || 100;
     width = width > 100 ? 100 : width;
     const fullLine = '*'.repeat(width);
-    let messageLine = `tap-headers data is now visible at http://localhost:${PORT}`;
+    let messageLine = `tap-headers data is now visible at http://localhost:${TAP_HEADERS_PORT}`;
     let blankLine = '*';
     if (width > 62) {
       messageLine = '* ' + messageLine.padEnd(width - 3, ' ') + '*';
@@ -86,14 +84,16 @@ const createMiddleware = (options) => {
     counter++;
     const requestId = counter;
 
-    request.on('data', (chunk) => {
-      const dataObject = {
-        id: requestId,
-        type: 'request',
-        body: chunk.toString()
-      };
-      dataRelay.write(dataObject);
-    });
+    if (INCLUDE_BODY) {
+      request.on('data', (chunk) => {
+        const dataObject = {
+          id: requestId,
+          type: 'request',
+          body: chunk.toString()
+        };
+        dataRelay.write(dataObject);
+      });
+    }
 
     const requestData = util.getRequestData(request, requestId);
     dataRelay.write(requestData);
@@ -105,7 +105,6 @@ const createMiddleware = (options) => {
     };
     next();
   };
-
 
   return middleware;
 };

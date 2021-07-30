@@ -1,4 +1,4 @@
-const url = 'ws://localhost:3001';
+const url = `ws://localhost:${window.TAP_HEADERS_PORT}`;
 const connection = new WebSocket(url);
 
 connection.onopen = () => {

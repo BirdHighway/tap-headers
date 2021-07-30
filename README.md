@@ -27,6 +27,19 @@ Navigate to http://localhost:3001 to view the record of request and response hea
 
 ![Tap headers screenshot](./screenshot.png?raw=true "Tap Headers Screenshot")
 
+## Options
+
+The `tapHeaders()` invocation accepts a optional coniguration object. The available options are listed below together with their default values.
+
+```
+const options = {
+  port: 3001,         // the port to use for the monitor webpage
+  includeBody: false  // whether to include the request body in the info logged
+}
+app.use(tapHeaders(options));
+```
+
+
 ## Tech Stack
 
 Calling `tapHeaders()` initiates a very basic web server on port 3001 that serves the HTML, JavaScript and CSS that make up the webpage displaying the headers received and sent so far. The return value of the function is a standard Express middleware function of the type `(req, res, next) => { ... }`.
