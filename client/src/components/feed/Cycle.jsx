@@ -31,7 +31,7 @@ class Cycle extends React.Component {
     });
   }
 
-  formatFirstLine(request) {
+  formatRequestFirstLine(request) {
     const method = request.meta.method;
     const url = request.meta.url;
     const version = request.meta.version;
@@ -44,8 +44,8 @@ class Cycle extends React.Component {
     const compact = this.props.cycle.compact;
     const requestHeaders = request.headers;
     const responseHeaders = response ? response.headers : null;
-    const firstLine = this.formatFirstLine(request);
-    const responseStatus = response ? response.meta.statusCode : 'awaiting response...';
+    const requestFirstLine = this.formatRequestFirstLine(request);
+    const responseFirstLine = response ? response.meta.firstLine : 'awaiting response...';
 
     const backgroundClass = 'background-' + request.meta.method.toLowerCase();
     const showAllBtnTxt = this.state.showAllHeaders ? 'Show Specified Headers' : 'Show All Headers';
@@ -58,7 +58,7 @@ class Cycle extends React.Component {
         </div>
         <div className="cycle-div">
           <div className="request-div">
-            <pre className="meta-line">{firstLine}</pre>
+            <pre className="meta-line">{requestFirstLine}</pre>
             <Headers
               type="request"
               showAllHeaders={this.state.showAllRequestHeaders}
@@ -68,7 +68,7 @@ class Cycle extends React.Component {
               compact={compact}/>
           </div>
           <div className="response-div">
-            <pre className="meta-line">{responseStatus}</pre>
+            <pre className="meta-line">{responseFirstLine}</pre>
             <Headers
               type="response"
               showAllHeaders={this.state.showAllResponseHeaders}

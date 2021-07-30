@@ -86,9 +86,9 @@ const createMiddleware = (options) => {
     dataRelay.write(requestData);
     const _end = response.end.bind(response);
     response.end = (data) => {
+      _end(data);
       const responseData = util.getResponseData(response, requestId);
       dataRelay.write(responseData);
-      _end(data);
     };
     next();
   };

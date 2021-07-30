@@ -1,9 +1,34 @@
+const regexFirstLine = RegExp(/^(.*)$/, 'm');
+const regexDate = RegExp(/^Date: (.*)$/, 'm');
+const regexConnection = RegExp(/^Connection: (.*)$/, 'm');
+const regexKeepAlive = RegExp(/^Keep-Alive: (.*)$/, 'm');
+
 const getRequestHeaders = (request) => {
   return request.headers;
 };
 
 const getReponseHeaders = (response) => {
-  return response.getHeaders();
+  const specifiedHeaders = response.getHeaders();
+  const autoHeaders = getAutoResponseFields(response._header);
+  const headers = {...specifiedHeaders, ...autoHeaders};
+  return headers;
+};
+
+const getAutoResponseFields = (rawHeaders) => {
+  const data = {};
+  const resultDate = regexDate.exec(rawHeaders);
+  if (resultDate) {
+    data['date'] = resultDate[1];
+  }
+  const resultConnection = regexConnection.exec(rawHeaders);
+  if (resultConnection) {
+    data['connection'] = resultConnection[1];
+  }
+  const resultKeepAlive = regexKeepAlive.exec(rawHeaders);
+  if (resultKeepAlive) {
+    data['keep-alive'] = resultKeepAlive[1];
+  }
+  return data;
 };
 
 const getRequestMeta = (request) => {
@@ -17,6 +42,8 @@ const getRequestMeta = (request) => {
 const getResponseMeta = (response) => {
   const meta = {};
   meta.statusCode = response.statusCode;
+  const resultFirstLine = regexFirstLine.exec(response._header);
+  meta.firstLine = resultFirstLine ? resultFirstLine[1] : '';
   return meta;
 };
 
@@ -37,7 +64,6 @@ const getResponseData = (response, requestId) => {
   data.meta = getResponseMeta(response);
   return data;
 };
-
 
 module.exports = {
   getRequestData,
