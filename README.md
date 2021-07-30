@@ -8,7 +8,7 @@ Tired of having to open the Chrome DevTools network tab and click through the re
 
 This package can also be used as an educational tool to explore or demonstrate the request-response cycle, or to ensure that the right headers are sent via other programs such as curl or Postman.
 
-Tap Headers is not suitable for production environments.
+Tap Headers is not recommended for production environments.
 
 ## Installation
 ```
