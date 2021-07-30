@@ -4,7 +4,7 @@ import Cycle from './Cycle';
 const CycleList = (props) => {
   const cycles = props.cycles.map((cycle) => {
     return (
-      <Cycle key={cycle.id}
+      <Cycle key={cycle.key}
         cycle={cycle}
         reqDisplayParams={props.reqDisplayParams}
         resDisplayParams={props.resDisplayParams}

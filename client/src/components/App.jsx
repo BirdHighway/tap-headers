@@ -80,6 +80,10 @@ class App extends React.Component {
   }
 
   processMessage(dataObject) {
+    if (dataObject.body !== undefined) {
+      this.addBody(dataObject);
+      return;
+    }
     if (dataObject.type === 'request') {
       this.addCycle(dataObject);
       return;
@@ -107,6 +111,22 @@ class App extends React.Component {
     }
     this.setState((prevState) => {
       const cycles = [cycleObject, ...prevState.cycles];
+      return {
+        ...prevState,
+        cycles: cycles
+      };
+    });
+  }
+
+  addBody(dataObject) {
+    const id = dataObject.id;
+    this.setState((prevState) => {
+      const cycles = prevState.cycles;
+      const cycle = cycles.find(cycle => cycle.id === id);
+      if (!cycle) {
+        return prevState;
+      }
+      cycle.addBody(dataObject);
       return {
         ...prevState,
         cycles: cycles

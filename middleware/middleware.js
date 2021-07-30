@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const WebSocket = require('ws');
 const DataRelay = require('./data-relay.js');
-
 const util = require('./functions.js');
 
 // the webpage displaying the data
@@ -51,7 +50,11 @@ const createMiddleware = (options) => {
     wss.clients.forEach((ws) => {
       ws.send(stringifiedData);
     });
-  });
+  }).on('end', () => {
+    console.log('DataRelay::end')
+  }).on('close', () => {
+    console.log('DataRelay::close');
+  })
 
   // set up the web socket connection
   wss.on('connection', (ws) => {
@@ -82,6 +85,16 @@ const createMiddleware = (options) => {
   const middleware = (request, response, next) => {
     counter++;
     const requestId = counter;
+
+    request.on('data', (chunk) => {
+      const dataObject = {
+        id: requestId,
+        type: 'request',
+        body: chunk.toString()
+      };
+      dataRelay.write(dataObject);
+    });
+
     const requestData = util.getRequestData(request, requestId);
     dataRelay.write(requestData);
     const _end = response.end.bind(response);

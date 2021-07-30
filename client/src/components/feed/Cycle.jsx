@@ -49,6 +49,11 @@ class Cycle extends React.Component {
 
     const backgroundClass = 'background-' + request.meta.method.toLowerCase();
     const showAllBtnTxt = this.state.showAllHeaders ? 'Show Specified Headers' : 'Show All Headers';
+    const showBody = request.body ? '' : 'hidden';
+    const body = request.body ? request.body : '';
+    const bodyRaw = body.replaceAll('\n', '\\n')
+      .replaceAll('\t', '\\t')
+      .replaceAll('\r', '\\r');
 
     return (
       <div className="cycle-container">
@@ -66,6 +71,7 @@ class Cycle extends React.Component {
               headerObject={requestHeaders}
               toggleShowAllHeaders={this.toggleShowAllHeaders}
               compact={compact}/>
+            <pre className={'body-container ' + showBody}>{bodyRaw}</pre>
           </div>
           <div className="response-div">
             <pre className="meta-line">{responseFirstLine}</pre>
