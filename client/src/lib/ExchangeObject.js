@@ -1,4 +1,4 @@
-class CycleObject {
+class ExchangeObject {
   constructor(request) {
     this.id = request.id;
     this.request = request;
@@ -38,4 +38,4 @@ class CycleObject {
   }
 }
 
-export default CycleObject;
+export default ExchangeObject;
