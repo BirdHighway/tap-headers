@@ -86,6 +86,17 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./client/src/components/features/feedSlice.js":
+/*!*****************************************************!*\
+  !*** ./client/src/components/features/feedSlice.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ feedReducer)\n/* harmony export */ });\nvar initialState = [];\nfunction feedReducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;\n  var action = arguments.length > 1 ? arguments[1] : undefined;\n\n  switch (action.type) {\n    default:\n      return state;\n  }\n}\n\n//# sourceURL=webpack://tap-headers/./client/src/components/features/feedSlice.js?");
+
+/***/ }),
+
 /***/ "./client/src/components/features/header/Header.jsx":
 /*!**********************************************************!*\
   !*** ./client/src/components/features/header/Header.jsx ***!
@@ -126,7 +137,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n/* harmony import */ var _features_settingsSlice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./features/settingsSlice */ \"./client/src/components/features/settingsSlice.js\");\n/* harmony import */ var _features_queueSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./features/queueSlice */ \"./client/src/components/features/queueSlice.js\");\n\n\n\nvar rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_2__.combineReducers)({\n  settings: _features_settingsSlice__WEBPACK_IMPORTED_MODULE_0__.default,\n  queue: _features_queueSlice__WEBPACK_IMPORTED_MODULE_1__.default\n});\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);\n\n//# sourceURL=webpack://tap-headers/./client/src/components/reducer.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! redux */ \"./node_modules/redux/es/redux.js\");\n/* harmony import */ var _features_settingsSlice__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./features/settingsSlice */ \"./client/src/components/features/settingsSlice.js\");\n/* harmony import */ var _features_queueSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./features/queueSlice */ \"./client/src/components/features/queueSlice.js\");\n/* harmony import */ var _features_feedSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./features/feedSlice */ \"./client/src/components/features/feedSlice.js\");\n\n\n\n\nvar rootReducer = (0,redux__WEBPACK_IMPORTED_MODULE_3__.combineReducers)({\n  settings: _features_settingsSlice__WEBPACK_IMPORTED_MODULE_0__.default,\n  queue: _features_queueSlice__WEBPACK_IMPORTED_MODULE_1__.default,\n  feed: _features_feedSlice__WEBPACK_IMPORTED_MODULE_2__.default\n});\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (rootReducer);\n\n//# sourceURL=webpack://tap-headers/./client/src/components/reducer.js?");
 
 /***/ }),
 
