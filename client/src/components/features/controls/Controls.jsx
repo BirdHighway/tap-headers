@@ -1,9 +1,10 @@
 import React from 'react';
+import ControlCompact from './ControlCompact';
 
 const Controls = () => {
   return (
     <div className="row">
-      <h1>CONTROLS</h1>
+      <ControlCompact />
     </div>
   )
 };
