@@ -12,9 +12,6 @@ const html = fs.readFileSync(htmlPath);
 const bundlePath = path.join(__dirname, '..', 'client', 'dist', 'bundle.js');
 const bundle = fs.readFileSync(bundlePath);
 
-const stylesPath = path.join(__dirname, '..', 'client', 'dist', 'styles.css');
-const styles = fs.readFileSync(stylesPath);
-
 const createMiddleware = (options) => {
   options = options || {};
   const TAP_HEADERS_PORT = options.port || 3001;
@@ -38,10 +35,6 @@ const createMiddleware = (options) => {
     if (url === '/bundle.js') {
       contentType = 'application/javascript; charset=UTF-8';
       data = bundle.toString();
-    }
-    if (url === '/styles.css') {
-      contentType = 'text/css; charset=UTF-8';
-      data = styles.toString();
     }
     response.writeHead(200, {'Content-Type': contentType});
     response.end(data);

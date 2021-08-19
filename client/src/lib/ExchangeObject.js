@@ -1,9 +1,9 @@
 class ExchangeObject {
-  constructor(request) {
+  constructor(request, options = {}) {
     this.id = request.id;
     this.request = request;
     this.response = null;
-    this.compact = false;
+    this.compact = options.compact === undefined ? false : options.compact;
     this.counter = 0;
     this.key = this.calculateKey();
   }
@@ -38,4 +38,4 @@ class ExchangeObject {
   }
 }
 
-export default ExchangeObject;
+module.exports = ExchangeObject;
