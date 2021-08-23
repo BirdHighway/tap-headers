@@ -36,6 +36,20 @@ class ExchangeObject {
   setCompact(value) {
     this.compact = value;
   }
+
+  getRequestLine() {
+    const method = this.request.meta.method;
+    const url = this.request.meta.url;
+    const version = this.request.meta.version;
+    return `${method} ${url} HTTP/${version}`;
+  }
+
+  getStatusLine() {
+    if (this.response === null) {
+      return '';
+    }
+    return this.response.meta.firstLine;
+  }
 }
 
 module.exports = ExchangeObject;
