@@ -46,7 +46,8 @@ class ExchangeObject {
   }
 
   toggleCompact() {
-    return this.compact = !this.compact;
+    this.compact = !this.compact;
+    return this;
   }
 
   setCompact(value) {

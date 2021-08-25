@@ -26,6 +26,14 @@ export default function feedReducer(state = initialState, action) {
         return exchange.setCompact(true);
       });
     }
+    case 'feed/compactOne': {
+      return state.map((exchange) => {
+        if (exchange.id === action.payload.id) {
+          return exchange.toggleCompact();
+        }
+        return exchange;
+      });
+    }
     default:
       return state;
   }
