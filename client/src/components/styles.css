@@ -1,5 +1,8 @@
 .exchange-row {
   margin-bottom: 1rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+  padding: 0.3rem;
 }
 
 .request-div,
@@ -7,6 +10,7 @@
   min-height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0.5rem;
 }
 
 

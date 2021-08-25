@@ -29,6 +29,10 @@ class ExchangeObject {
     this[type].body = existingBody + dataObject.body;
   }
 
+  isCompact() {
+    return this.compact;
+  }
+
   toggleCompact() {
     this.compact = !this.compact;
   }
