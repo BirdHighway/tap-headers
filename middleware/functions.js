@@ -50,6 +50,7 @@ const getResponseMeta = (response) => {
 const getRequestData = (request, requestId) => {
   const data = {};
   data.id = requestId;
+  data.time = Date.now();
   data.type = 'request';
   data.headers = getRequestHeaders(request);
   data.meta = getRequestMeta(request);
@@ -59,6 +60,7 @@ const getRequestData = (request, requestId) => {
 const getResponseData = (response, requestId) => {
   const data = {};
   data.id = requestId;
+  data.time = Date.now();
   data.type = 'response';
   data.headers = getReponseHeaders(response);
   data.meta = getResponseMeta(response);

@@ -1,6 +1,8 @@
 class ExchangeObject {
   constructor(request, options = {}) {
     this.id = request.id;
+    this.requestTime = new Date(request.time).toLocaleTimeString();
+    this.elapsedTime = null;
     this.request = request;
     this.response = null;
     this.compact = options.compact === undefined ? false : options.compact;
@@ -20,6 +22,7 @@ class ExchangeObject {
   addResponse(response) {
     this.key = this.calculateKey();
     this.response = response;
+    this.elapsedTime = this.response.time - this.request.time;
     return this;
   }
 
@@ -29,6 +32,13 @@ class ExchangeObject {
     const existingBody = this[type].body || '';
     this[type].body = existingBody + dataObject.body;
     return this;
+  }
+
+  getTimeElapsed() {
+    if (this.elapsedTime === null) {
+      return '';
+    }
+    return `${this.elapsedTime} ms`;
   }
 
   isCompact() {
