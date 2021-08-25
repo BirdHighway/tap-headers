@@ -12,11 +12,27 @@ const ControlCompact = () => {
     dispatch({ type: 'settings/toggleAutoCompact' });
   }
 
+  const compactAll = () => {
+    dispatch({ type: 'feed/compactAll' });
+  }
+
+  const expandAll = () => {
+    dispatch({ type: 'feed/expandAll' });
+  }
+
   return (
     <div className="col">
-      <button type="button" className="btn btn-primary">Compact All</button>
+      <button onClick={compactAll}
+        type="button"
+        className="btn btn-primary">
+        Compact All
+      </button>
       <br />
-      <button type="button" className="btn btn-primary">Expand All</button>
+      <button onClick={expandAll}
+        type="button"
+        className="btn btn-primary">
+        Expand All
+      </button>
       <br />
       <label>
         Auto Compact New:

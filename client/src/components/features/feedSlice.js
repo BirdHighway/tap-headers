@@ -6,7 +6,7 @@ export default function feedReducer(state = initialState, action) {
   switch(action.type) {
     case 'feed/addRequest': {
       const exchange = new ExchangeObject(action.payload.data, action.payload.options);
-      return [...state, exchange];
+      return [exchange, ...state];
     }
     case 'feed/addResponse': {
       const exchange = state.find((ex) => ex.id === action.payload.data.id);
@@ -17,10 +17,14 @@ export default function feedReducer(state = initialState, action) {
       return [...state];
     }
     case 'feed/expandAll': {
-      return [...state];
+      return state.map((exchange) => {
+        return exchange.setCompact(false);
+      });
     }
-    case 'feed/collapseAll': {
-      return [...state];
+    case 'feed/compactAll': {
+      return state.map((exchange) => {
+        return exchange.setCompact(true);
+      });
     }
     default:
       return state;

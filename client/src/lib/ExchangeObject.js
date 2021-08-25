@@ -20,6 +20,7 @@ class ExchangeObject {
   addResponse(response) {
     this.key = this.calculateKey();
     this.response = response;
+    return this;
   }
 
   addBody(dataObject) {
@@ -27,6 +28,7 @@ class ExchangeObject {
     const type = dataObject.type;
     const existingBody = this[type].body || '';
     this[type].body = existingBody + dataObject.body;
+    return this;
   }
 
   isCompact() {
@@ -34,11 +36,12 @@ class ExchangeObject {
   }
 
   toggleCompact() {
-    this.compact = !this.compact;
+    return this.compact = !this.compact;
   }
 
   setCompact(value) {
     this.compact = value;
+    return this;
   }
 
   getRequestLine() {
