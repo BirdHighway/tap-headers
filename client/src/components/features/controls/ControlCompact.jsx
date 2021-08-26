@@ -22,6 +22,7 @@ const ControlCompact = () => {
 
   return (
     <div className="col">
+      <h3>Compact</h3>
       <button onClick={compactAll}
         type="button"
         className="btn btn-primary">
@@ -42,7 +43,6 @@ const ControlCompact = () => {
           onChange={toggleAutoCompact}
         />
       </label>
-      <pre>{JSON.stringify(settings)}</pre>
     </div>
   );
 };

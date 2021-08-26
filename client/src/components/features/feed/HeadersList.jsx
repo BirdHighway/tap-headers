@@ -1,10 +1,14 @@
 import React from 'react';
 import Header from './Header';
 
-const HeadersList = ({data}) => {
+const HeadersList = ({data, compact}) => {
+
+  const compactClass = compact ? 'compact' : 'expanded';
 
   if (data === null) {
-    return null;
+    return (
+      <div className={"header-lines " + compactClass}></div>
+    );
   }
 
   const headerLines = Object.entries(data.headers).map((header) => {
@@ -14,7 +18,7 @@ const HeadersList = ({data}) => {
   });
 
   return (
-    <div className="header-lines">
+    <div className={"header-lines " + compactClass}>
       {headerLines}
     </div>
   );

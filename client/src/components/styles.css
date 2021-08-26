@@ -18,8 +18,6 @@
   padding: 0.5rem;
 }
 
-
-
 .start-line {
   font-size: 1rem;
   font-weight: bold;
@@ -36,4 +34,15 @@ p.header {
 div.header-lines {
   flex: 1;
   overflow-x: scroll;
+  transition: all .5s ease-in-out;
+  overflow-y: hidden;
+}
+
+.header-lines.compact {
+  line-height: 0;
+  color: transparent;
+  overflow-x: hidden;
+}
+.header-lines.expanded {
+  color: black;
 }

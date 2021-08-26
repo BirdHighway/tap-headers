@@ -15,8 +15,6 @@ const Exchange = ({exchange}) => {
     });
   };
 
-  const requestHeaders = exchange.isCompact() ? '' : <HeadersList data={exchange.request} />;;
-  const responseHeaders = exchange.isCompact() ? '' : <HeadersList data={exchange.response} />;
   const timeElapsed = exchange.getTimeElapsed();
 
   return (
@@ -36,13 +34,13 @@ const Exchange = ({exchange}) => {
         <div className="col-6">
           <div className="request-div">
             <pre className="start-line">{exchange.getRequestLine()}</pre>
-            {requestHeaders}
+            <HeadersList data={exchange.request} compact={exchange.isCompact()}/>
           </div>
         </div>
         <div className="col-6">
           <div className="response-div">
             <pre className="start-line">{exchange.getStatusLine()}</pre>
-            {responseHeaders}
+            <HeadersList data={exchange.response} compact={exchange.compact}/>
           </div>
         </div>
       </div>
