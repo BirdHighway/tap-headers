@@ -27,6 +27,9 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    connection.onopen = () => {
+      dispatch({ type: 'settings/openConnection' });
+    };
     connection.onmessage = (message) => {
       const data = JSON.parse(message.data);
       if (settings.autoUpdate) {
@@ -36,7 +39,7 @@ const App = () => {
           payload: {data, options: {compact: settings.autoCompact}}
         });
       }
-    }
+    };
   }, [settings]);
 
   return (

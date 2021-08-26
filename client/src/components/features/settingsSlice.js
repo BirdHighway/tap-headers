@@ -1,7 +1,7 @@
 const initialState = {
   autoCompact: false,
   autoUpdate: true,
-  connected: true
+  connected: false
 };
 
 export default function settingsReducer(state = initialState, action) {
@@ -15,6 +15,11 @@ export default function settingsReducer(state = initialState, action) {
       return {
         ...state,
         autoCompact: !state.autoUpdate
+      }
+    case 'settings/openConnection':
+      return {
+        ...state,
+        connected: true
       }
     case 'settings/closeConnection':
       return {
