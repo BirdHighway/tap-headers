@@ -18,6 +18,7 @@ const ControlConnection = () => {
     <div className="col">
       <h3>Connection</h3>
       <button onClick={closeConnection}
+        disabled={!settings.connected}
         type="button"
         className="btn btn-danger">
         Close Connection
