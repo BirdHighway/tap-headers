@@ -16,6 +16,11 @@ export default function settingsReducer(state = initialState, action) {
         ...state,
         autoCompact: !state.autoUpdate
       }
+    case 'settings/closeConnection':
+      return {
+        ...state,
+        connected: false
+      }
     default:
       return state;
   }
