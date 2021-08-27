@@ -7,15 +7,18 @@ const util = require('./functions.js');
 
 // the webpage displaying the data
 const htmlPath = path.join(__dirname, '..', 'client', 'dist', 'index.html');
-const html = fs.readFileSync(htmlPath);
+const rawHtml = fs.readFileSync(htmlPath);
 
 const bundlePath = path.join(__dirname, '..', 'client', 'dist', 'bundle.js');
-const bundle = fs.readFileSync(bundlePath);
+const rawBundle = fs.readFileSync(bundlePath);
 
 const createMiddleware = (options) => {
   options = options || {};
   const TAP_HEADERS_PORT = options.port || 3001;
   const INCLUDE_BODY = options.includeBody || false;
+  const html = rawHtml.toString()
+    .replace('{PORT}', TAP_HEADERS_PORT.toString())
+    .replace('{INCLUDE_BODY}', INCLUDE_BODY);
   const server = http.createServer();
   const wss = new WebSocket.Server({server});
 
@@ -29,12 +32,11 @@ const createMiddleware = (options) => {
     let data;
     if (url === '/' || url === '/index.html') {
       contentType = 'text/html; charset=UTF-8';
-      data = html.toString();
-      data = data.replace('3001', TAP_HEADERS_PORT.toString());
+      data = html;
     }
     if (url === '/bundle.js') {
       contentType = 'application/javascript; charset=UTF-8';
-      data = bundle.toString();
+      data = rawBundle.toString();
     }
     response.writeHead(200, {'Content-Type': contentType});
     response.end(data);

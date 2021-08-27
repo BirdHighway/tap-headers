@@ -23,7 +23,6 @@ const Exchange = ({exchange}) => {
     }
     let code = response.meta.statusCode;
     let c = code.toString().substring(0, 1);
-    console.log(c);
     switch (c) {
       case '1':
         return <span className="badge float-end mt-2 bg-info text-dark">{code}</span>;
