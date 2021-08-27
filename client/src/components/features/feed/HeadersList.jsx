@@ -18,7 +18,7 @@ const HeadersList = ({data, compact}) => {
   });
 
   return (
-    <div className={"header-lines " + compactClass}>
+    <div className={"header-lines px-2 pb-1 " + compactClass}>
       {headerLines}
     </div>
   );

@@ -16,13 +16,19 @@ const ControlConnection = () => {
 
   return (
     <div className="col">
-      <h3>Connection</h3>
-      <button onClick={closeConnection}
-        disabled={!settings.connected}
-        type="button"
-        className="btn btn-danger">
-        Close Connection
-      </button>
+      <div className="card h-100 border-dark">
+        <div className="card-header">
+          <h5 className="pt-2">Connection</h5>
+        </div>
+        <div className="card-body text-dark">
+        <button onClick={closeConnection}
+          disabled={!settings.connected}
+          type="button"
+          className="btn btn-danger">
+          Close Connection
+        </button>
+        </div>
+      </div>
     </div>
   );
 };

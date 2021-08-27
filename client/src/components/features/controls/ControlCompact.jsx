@@ -22,27 +22,38 @@ const ControlCompact = () => {
 
   return (
     <div className="col">
-      <h3>Compact</h3>
-      <button onClick={compactAll}
-        type="button"
-        className="btn btn-primary">
-        Compact All
-      </button>
-      <br />
-      <button onClick={expandAll}
-        type="button"
-        className="btn btn-primary">
-        Expand All
-      </button>
-      <br />
-      <label>
-        Auto Compact New:
-        <input name="autoCompact"
-          type="checkbox"
-          checked={settings.autoCompact}
-          onChange={toggleAutoCompact}
-        />
-      </label>
+      <div className="card h-100 border-dark">
+        <div className="card-header">
+          <h5 className="pt-2">Compact</h5>
+        </div>
+        <div className="card-body text-dark">
+          <button onClick={compactAll}
+            type="button"
+            className="btn btn-secondary">
+            Compact All
+          </button>
+          <br />
+          <button onClick={expandAll}
+            type="button"
+            className="btn btn-secondary">
+            Expand All
+          </button>
+          <br />
+          <div className="form-check">
+            <input name="autoCompact"
+              className="form-check-input"
+              id="checkAutoCompact"
+              type="checkbox"
+              checked={settings.autoCompact}
+              onChange={toggleAutoCompact}
+            />
+            <label className="form-check-label"
+              htmlFor="checkAutoCompact">
+              Auto Compact New
+            </label>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
