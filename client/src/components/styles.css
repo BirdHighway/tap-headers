@@ -29,25 +29,32 @@
   margin-bottom: 0;
 }
 
-p.header {
+span.header {
+  display: block;
   white-space: pre;
   font-family: monospace;
   margin-bottom: 0;
   font-size: .8rem;
 }
 
-div.header-lines {
+.exchange-body {
+  white-space: pre;
+  font-family: monospace;
+  font-size: .8rem;
+}
+
+div.exchange-details {
   flex: 1;
   overflow-x: scroll;
   transition: all .5s ease-in-out;
   overflow-y: hidden;
 }
 
-.header-lines.compact {
+.exchange-details.compact {
   line-height: 0;
   color: transparent;
   overflow-x: hidden;
 }
-.header-lines.expanded {
+.exchange-details.expanded {
   color: black;
 }

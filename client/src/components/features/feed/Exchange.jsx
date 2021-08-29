@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import HeadersList from './HeadersList';
+import Body from './Body';
 
 const Exchange = ({exchange}) => {
 
@@ -39,6 +40,8 @@ const Exchange = ({exchange}) => {
     };
   };
 
+  const compactClass = exchange.isCompact() ? 'compact' : 'expanded';
+
   return (
     <div className="exchange-row bg-light">
       <div className="row exchange-header">
@@ -59,13 +62,19 @@ const Exchange = ({exchange}) => {
         <div className="col-6">
           <div className="request-div border border-dark bg-white">
             <pre className="start-line px-2 pt-1">{exchange.getRequestLine()}</pre>
-            <HeadersList data={exchange.request} compact={exchange.isCompact()}/>
+            <div className={"exchange-details " + compactClass}>
+              <HeadersList data={exchange.request} compact={exchange.isCompact()}/>
+              <Body data={exchange.request} />
+            </div>
           </div>
         </div>
         <div className="col-6">
           <div className="response-div border border-dark bg-white">
             <pre className="start-line px-2 pt-1">{exchange.getStatusLine()}</pre>
-            <HeadersList data={exchange.response} compact={exchange.compact}/>
+            <div className={"exchange-details " + compactClass}>
+              <HeadersList data={exchange.response} compact={exchange.compact}/>
+              <Body data={exchange.response} />
+            </div>
           </div>
         </div>
       </div>

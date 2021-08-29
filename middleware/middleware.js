@@ -97,6 +97,13 @@ const createMiddleware = (options) => {
       _end(data);
       const responseData = util.getResponseData(response, requestId);
       dataRelay.write(responseData);
+      if (INCLUDE_BODY) {
+        dataRelay.write({
+          id: requestId,
+          type: 'response',
+          body: data.toString()
+        });
+      };
     };
     next();
   };

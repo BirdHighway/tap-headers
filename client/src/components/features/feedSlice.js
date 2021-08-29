@@ -14,6 +14,8 @@ export default function feedReducer(state = initialState, action) {
       return [...state];
     }
     case 'feed/addBody': {
+      const exchange = state.find((ex) => ex.id === action.payload.data.id);
+      exchange.addBody(action.payload.data);
       return [...state];
     }
     case 'feed/expandAll': {
